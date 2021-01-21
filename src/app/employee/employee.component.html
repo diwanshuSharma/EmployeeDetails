@@ -1,0 +1,35 @@
+<app-employee-search (notifySearch)="getEmployees($event)"></app-employee-search>
+<app-employee-sort (notifyOptionSearch)="sortEmployees($event)"></app-employee-sort>
+<hr />
+
+<app-employee-count [totalCount]="getTotalCount()" [maleCount]="getMaleCount()" [femaleCount]="getFemaleCount()">
+</app-employee-count>
+
+<ng-container *ngIf="employees.length > 0; else noData"></ng-container>
+<div class="card" style="width: 18rem" *ngFor="let e of showEmployees; let i = index" (mouseenter)="mouseEnter($event)" (mouseleave)="mouseLeave($event)">
+    <img class="card-img-top" [src]="getEmpImage(i)" alt="Card image cap" imageBorder />
+    <div class="card-body">
+        <h5 class="card-title" [innerText]="getFullName(i)"></h5>
+        <p class="card-text" [innerText]="getEmpDescription(i)"></p>
+        <span class="display">Gender</span
+    ><span class="detail" [innerText]="e.Gender"></span> <br />
+        <span class="display">Date Of Birth</span
+    ><span class="detail" [innerText]="e.DOB | date: 'dd/MM/y'"></span>
+        <br />
+        <span class="display">Age</span
+    ><span class="detail" [innerText]="e.DOB.toString() | employeeAge"></span>
+        <br />
+        <span class="display">Op.Area</span
+    ><span class="detail" [innerText]="e.Area"></span> <br />
+
+        <hr />
+
+        <button class="btn btn-success" [attr.disabled]="e.IsAvailable ? null : ''">
+      Available
+    </button>
+    </div>
+</div>
+
+<ng-template #noData>
+    <h1>No Data Available</h1>
+</ng-template>

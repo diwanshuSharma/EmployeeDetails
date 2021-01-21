@@ -1,0 +1,19 @@
+.card {
+    text-align: center;
+    display: inline-block;
+    margin: 10px;
+    border-radius: 3%;
+}
+
+.display {
+    font-weight: bold;
+    float: left;
+}
+
+.detail {
+    float: right;
+}
+
+.box-shadow {
+    box-shadow: 1px 5px 5px gray;
+}
